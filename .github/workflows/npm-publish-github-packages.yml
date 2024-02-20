@@ -10,7 +10,7 @@ on:
 
 jobs:
   cypress:
-    name: Cypress CI-CD Execution
+    name: API Test CI-CD
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -25,16 +25,17 @@ jobs:
           always-auth: true
           cache: 'npm'
           
-      - name:  Install dependencie
+      - name:  Install dependencies
         run: npm install
-          
+
+      - name: Run test in Cypress
       - uses: cypress-io/github-action@v4
         with:
           command: npm run cy:run
 
-      - name: Upload cypress report
+      - name: Generate and Upload Cypress report
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: cypress-report
+          name: Test-Report
           path: mochawesome-report/
