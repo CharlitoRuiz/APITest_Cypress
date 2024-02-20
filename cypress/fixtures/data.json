@@ -8,6 +8,7 @@
     "status":"active"
   },
   "Update":{
-    "name": "Carlos Ruiz New"
+    "name": "Carlos Ruiz New",
+    "status":"inactive"
   }
 }
