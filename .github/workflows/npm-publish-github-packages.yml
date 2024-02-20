@@ -7,26 +7,27 @@ on:
   push:
     branches:
     - main
-    - release/*
 
 jobs:
-  test:
-    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node_version: ['8', '10', '12']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-
+  cypress:
+    name: Cypress CI-CD Execution
+    runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node_version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node_version }}
-
-    - name: npm install and test
-      run: npm install
-    - uses: cypress-io/github-action@v4
-      with:
-        command: npm run cy:run
+      - uses: actions/checkout@v3
+        with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          always-auth: true
+          cache: 'npm'
+          
+      - name:  Install dependencie
+        run: npm install
+          
+      - uses: cypress-io/github-action@v4
+        with:
+          command: npm run cy:run
