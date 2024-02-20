@@ -31,3 +31,10 @@ jobs:
       - uses: cypress-io/github-action@v4
         with:
           command: npm run cy:run
+
+      - name: Upload cypress report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-report
+          path: mochawesome-report/mochawesome.html
