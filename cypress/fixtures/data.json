@@ -1,0 +1,13 @@
+{
+  "idUser": "6595382",
+
+  "Create":{
+    "name": "Carlos Ruiz",
+    "email": "hello-2@cypress.io",
+    "gender": "male",
+    "status":"active"
+  },
+  "Update":{
+    "name": "Carlos Ruiz New"
+  }
+}

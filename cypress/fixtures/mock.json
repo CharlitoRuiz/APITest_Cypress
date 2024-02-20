@@ -1,0 +1,9 @@
+[
+  {
+      "id": 1,
+      "name": "Carlos Ruiz Mock",
+      "email": "mock@cypress.io",
+      "gender": "male-mock",
+      "status": "mock"
+  }
+]
